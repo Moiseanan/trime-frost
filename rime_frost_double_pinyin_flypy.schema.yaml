@@ -33,6 +33,15 @@ schema:
 # states: 方案选单显示的名称。可以注释掉，仍可以通过快捷键切换。
 # abbrev: 默认的缩写取 states 的第一个字符，abbrev 可自定义一个字符
 switches:
+  #这个按键用来调出同文输入法的设置界面
+  #这里的空格直接用来调整按键范围
+  - options: [_key_Settings]
+    states: ["   设置"]
+  
+  # 这个按键用来调出输入法切换菜单
+  #- options: [_key_IME_switch]
+  #  states: ["菜单"]
+    
   - name: ascii_mode
     states: [ 中, Ａ ]
   - name: ascii_punct  # 中英标点
@@ -46,7 +55,34 @@ switches:
     states: [ 半角, 全角 ]
   - name: search_single_char  # search.lua 的功能开关，辅码查词时是否单字优先
     abbrev: [词, 单]
-    states: [正常, 单字]
+    states: [ 正常, 单字 ]
+    
+  # 这个按键用来切换键盘布局（在主键盘、数字键盘、英文键盘之间轮换）
+  #- options: [_keyboard_.default, _keyboard_letter, _keyboard_number]
+  #  states: [zh, abc, 123]
+  #多个键盘轮换的功能还有一些问题，有待完善
+  
+  # 这是一个空按键，按下去不会执行任何动作
+  #- options: [_key_VoidSymbol]
+  #  states: ["  "] #空键的宽度由这里的空格决定
+
+  # 这个按键用来输出句号
+  #- options: [_key_period] #period是句号的英文名，也可以直接写成[ _key_. ]
+  #  states: ["。"]
+
+  # 这个按键用来输出固定的短语
+  #- options: [_key_seananpaul]
+  #  states: ["kokomi"]
+  
+  # 也可以只切换到一个特定的键盘
+  #- options: [_keyboard_number]
+  #  states: [123]
+  # 这个按键用来收起软键盘
+  - options: [_key_Hide]
+    states: ["          ▽ "]
+  #states是显示在状态栏的图标，options是实际执行的功能
+  
+  # 更多功能键请查阅trime.yaml/preset_keys
 
 
 # 输入引擎
